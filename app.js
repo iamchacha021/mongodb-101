@@ -17,7 +17,7 @@ connectToDb((err) => {
 })
 
 // routes
-// get all books
+// get all blogs
 app.get('/blogs', (req, res) => {
     // pagination
     const page = req.query.pages || 0
@@ -36,7 +36,7 @@ app.get('/blogs', (req, res) => {
     .catch(() => res.status(500).json({error: "Server error"}));
 });
 
-// get one book
+// get one blog
 app.get('/blogs/:id', (req, res) => {
     if(ObjectId.isValid(req.params.id)){
         db.collection('blogs')
@@ -48,7 +48,7 @@ app.get('/blogs/:id', (req, res) => {
     }
 });
 
-// posting books
+// posting blogs
 app.post('/blogs', (req, res) => {
     const blog = req.body;
     db.collection('blogs')
@@ -57,7 +57,7 @@ app.post('/blogs', (req, res) => {
     .catch( err => res.status(500).json({error: 'Could not create'}));
 });
 
-// deleting books
+// deleting blogs
 app.delete('/blogs/:id', (req, res) => {
     if (ObjectId.isValid(req.params.id)) {
         db.collection('blogs')
@@ -69,7 +69,7 @@ app.delete('/blogs/:id', (req, res) => {
     }
 })
 
-// patch request on the books
+// patch request on the blogs
 app.patch('/blogs/:id', (req, res) => {
     const updates = req.body;
 
